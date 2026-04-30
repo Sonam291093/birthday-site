@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For You ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      overflow-x: hidden;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    .italic-text { font-style: italic; }
+    .straight-emoji { font-style: normal !important; display: inline-block; }
+
+    @keyframes heartbeat {
+      0%, 100% {transform: scale(1);}
+      50% {transform: scale(1.01);}
+    }
+
+    .page {
+      min-height: 100vh;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    #lock { display: flex; } 
+
+    input {
+      padding: 12px; border-radius: 8px; border: none;
+      text-align: center; font-style: italic; outline: none;
+    }
+
+    button {
+      padding: 12px 30px; background: white; border: none;
+      color: #ff4b5c; font-weight: bold; border-radius: 50px;
+      cursor: pointer; margin-top: 20px; font-family: inherit;
+    }
+
+    .bday-glow {
+      font-size: 50px;
+      font-weight: 300;
+      text-shadow: 0 0 15px rgba(255,255,255,0.6);
+      margin: 0;
+    }
+
+    /* ✨ Perfect Pinterest Masonry Grid */
+    .masonry-grid {
+      column-count: 2;
+      column-gap: 12px;
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto;
+    }
+
+    .masonry-item {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      break-inside: avoid; 
+      transition: transform 0.3s;
+    }
+
+    video {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      margin-bottom: 15px;
+    }
+
+    .letter-box {
+      background: #fffbf2;
+      color: #444;
+      padding: 25px;
+      width: 85%;
+      max-width: 380px;
+      border-radius: 2px;
+      box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+      font-style: italic;
+      line-height: 1.6;
+      text-align: left;
+      border-left: 5px solid #ff758c;
+    }
+
+    .heart {
+      position: fixed; 
+      bottom: -50px;
+      color: #ff4b5c; 
+      font-style: normal !important;
+      animation: float 6s linear infinite; 
+      pointer-events: none; 
+      z-index: 1000;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(0.8); opacity:1; }
+      100% { transform: translateY(-110vh) scale(1.2); opacity:0; }
+    }
+
+    #cutePopup {
+      display: none;
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.7);
+      justify-content:center;
+      align-items:center;
+      z-index: 2000;
+    }
+  </style>
+</head>
+<body onload="startHearts()">
+
+<div id="lock" class="page">
+  <h2 class="italic-text">Enter Secret <span class="straight-emoji">❤️</span></h2>
+  <input type="password" id="pass" placeholder="Password...">
+  <button onclick="unlock()">Unlock <span class="straight-emoji">🔓</span></button>
+  <p id="errorMsg" style="margin-top:15px; height: 20px;"></p>
+</div>
+
+<div id="start" class="page">
+  <h1 class="straight-emoji" style="font-size: 60px;">🦍🫠</h1>
+  <button onclick="showPage('giftPage'); typeText();">Open Gift <span class="straight-emoji">🎁</span></button>
+</div>
+
+<div id="giftPage" class="page">
+  <p id="typing" style="font-size: 32px; font-style: italic;"></p>
+  <button id="contBtn" style="display:none;" onclick="showPage('pureBdayPage'); startMusic();">Continue <span class="straight-emoji">❤️</span></button>
+</div>
+
+<div id="pureBdayPage" class="page">
+  <h1 class="italic-text bday-glow">Happy Birthday</h1>
+  <h1 class="straight-emoji" style="font-size: 40px; margin-top: 10px;">❤️</h1>
+  <button onclick="showPage('birthdayPage')"> areee tap kro 🫤<span class="straight-emoji">🌝</span></button>
+</div>
+
+<div id="birthdayPage" class="page" style="display:none; justify-content: flex-start; padding-top: 40px;">
+  <h2 class="italic-text" style="margin-bottom:10px;">For You <span class="straight-emoji">💐🎂❤️</span></h2>
+  
+<video controls>
+  <source src="images/video.mp4" type="video/mp4">
+</video>
+
+<div class="masonry-grid">
+    <img src="images/IMG-1765.jpg" class="masonry-item">
+    <img src="images/photo-output-1.jpg" class="masonry-item">
+    <img src="images/IMG-1763.jpg" class="masonry-item">
+    <img src="images/photo-output-2.jpg" class="masonry-item">
+    <img src="images/IMG-1764.jpg" class="masonry-item">
+    <img src="images/photo-output.jpg" class="masonry-item">
+</div>
+
+  <button onclick="showPage('letterPage')" style="margin-bottom: 40px;">something special <span class="straight-emoji">🫠</span></button>
+</div>
+
+<div id="letterPage" class="page">
+  <div class="letter-box">
+    <h3 style="margin-top: 0;">🫂11:11♾️</h3>
+    <p>Sbse phle toh thanku so much🫠 you are the best m bta rhi hu jaanna nhi hai or dusri baat english m nhi likh rhi firr nhi bolna chaap liya...smjhe 😒aap sch m bhot ache ho nd i'm very happy with you🥹aapki toh uhi shakal bni rhti hai jbb dekho tbb sugle🫣Thanku soooooooo muchhhh for being honest with me,for loving me. you means a lot to me🤧nd i'm very lucky to have you 🧿 .....birthday hai aapka jyada nhi bolungi 🤧a verrrrrryyyyyyyy vverrrrrrryyyyyy happppppppyyyyyyy birthdayyyyyyyyyyyyy🫂 be happy always thodi tension kmm liya kro 🫠🌝</p>
+    <p style="text-align: right;">—🐣🫣🤧</p>
+  </div>
+  <button onclick="showPage('finalPage');">bss bss last<span class="straight-emoji">😘</span></button>
+</div>
+
+<div id="finalPage" class="page">
+  <h1 class="italic-text" style="font-size: 45px;">Love You <span class="straight-emoji">❤️</span></h1>
+  <h2 class="italic-text"> <span class="straight-emoji">🧿🦍❤️</span></h2>
+</div>
+
+<div id="cutePopup">
+  <div style="background:white; color:#ff4b5c; padding:30px; border-radius:15px; width:70%; max-width:300px;">
+    <h3>Itna try kar rhe ho? <span class="straight-emoji">😒</span></h3>
+    <p>Hint: complete special date... yaad hai? 🤔</p>
+    <button onclick="closeCute()">Smjhe? <span class="straight-emoji">😗</span></button>
+  </div>
+</div>
+
+<audio id="music" loop><source src="PASTE_MUSIC_LINK_HERE.mp3" type="audio/mp3"></audio>
+
+<script>
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+  const target = document.getElementById(pageId);
+  target.style.display = 'flex';
+  
+  if(pageId === 'birthdayPage') {
+    target.style.height = 'auto';
+    target.style.minHeight = '100vh';
+  }
+}
+
+function startMusic() { document.getElementById("music").play(); }
+
+const funnyMessages = ["Hupp!!!","Hurr 😏","Repta pdega 👀","Galat 😒!","Guuuu khao🌝"];
+let attempts = 0;
+
+function unlock() {
+  const input = document.getElementById("pass");
+  if (input.value === "23012025") {
+    showPage('start');
+  } else {
+    attempts++;
+    document.getElementById("errorMsg").innerText = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
+    if (attempts >= 3) {
+      document.getElementById("cutePopup").style.display = "flex";
+      attempts = 0;
+    }
+  }
+}
+
+function closeCute() { document.getElementById("cutePopup").style.display = "none"; }
+
+let i = 0; const text = "Gift chahiye....?!!🫣😗 Chlo fir.......";
+function typeText() {
+  let typingArea = document.getElementById("typing");
+  if (i < text.length) {
+    let char = text.charAt(i);
+    typingArea.innerHTML += (char === "❤️") ? `<span class="straight-emoji">${char}</span>` : char;
+    i++; setTimeout(typeText, 150);
+  } else document.getElementById("contBtn").style.display = "inline-block";
+}
+
+function startHearts(){
+  setInterval(()=>{
+    let h = document.createElement("div"); 
+    h.innerHTML = "❤️"; 
+    h.className = "heart";
+    h.style.left = Math.random()*100 + "vw"; 
+    h.style.fontSize = (15 + Math.random()*25) + "px";
+    document.body.appendChild(h); 
+    setTimeout(()=>h.remove(),6000);
+  },300);
+}
+</script>
+</body>
+</html>
